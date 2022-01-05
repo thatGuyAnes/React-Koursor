@@ -11,8 +11,8 @@ const getMousePos = (mouseEvent) => {
         posy = mouseEvent.pageY;
     }
     else if (mouseEvent.clientX || mouseEvent.clientY)    {
-        posx = mouseEvent.clientX + body.scrollLeft + document.documentElement.scrollLeft;
-        posy = mouseEvent.clientY + body.scrollTop + document.documentElement.scrollTop;
+        posx = mouseEvent.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+        posy = mouseEvent.clientY + document.body.scrollTop + document.documentElement.scrollTop;
     }
 
     return { x : posx, y : posy }

@@ -43,47 +43,44 @@ export default function Kursor() {
     }
     // Assigning the cursor's x and y to the HTML cursor element.
     cursorRef.current.style.transform = `translateX(${(configs.current['x'].previous)}px) translateY(${configs.current['y'].previous}px)`;
-    // cursorRef.current.style.top = `${configs.current.y.previous}px`;
-    // cursorRef.current.style.left = `${configs.current.x.previous}px`;
 
-    requestRef.current = requestAnimationFrame(() => animateCursor);
+    requestRef.current = requestAnimationFrame(() => animateCursor());
     // requestAnimationFrame(() => animateCursor());
   }, []);
 
   const onMouseMoveEv = useCallback(() => {
-    // console.log('mouse', mouse.current)
-    // console.log('cursor', configs.current)
-
-    // mouse.current = mousePos;
 
     configs.current.x.previous = configs.current.x.current = mouse.current.x - bounds.current.width / 2;
     configs.current.y.previous = configs.current.y.previous = mouse.current.y - bounds.current.height / 2;
+    // requestRef.current = requestAnimationFrame(() => animateCursor());
+
     requestRef.current = requestAnimationFrame(() => animateCursor());
-    // window.removeEventListener('mousemove', onMouseMoveEv);
+    // requestAnimationFrame(() => animateCursor());
+
+    window.removeEventListener('mousemove', onMouseMoveEv);
   }, [animateCursor]);
+
+
 
   useEffect(() => {
     bounds.current = cursorRef.current.getBoundingClientRect();
 
-    // window.addEventListener('mousemove', mouseMoveEvent);
     window.addEventListener('mousemove', onMouseMoveEv);
 
-    // animateCursor();
-
     return () => {
-      // window.removeEventListener('mousemove', mouseMoveEvent);
       window.removeEventListener('mousemove', onMouseMoveEv);
       cancelAnimationFrame(requestRef.current);
     }
   }, [onMouseMoveEv]);
 
+
+
   useEffect(() => {
-    console.log(configs.current)
     window.addEventListener('mousemove', windowMouseMoveHandler);
     return () => {
       window.removeEventListener('mousemove', windowMouseMoveHandler);
     }
-  })
+  }, []);
 
   return (
     <div>
