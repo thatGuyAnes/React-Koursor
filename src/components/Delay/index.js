@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './cursor.css';
+import './style.css';
 
 const Cursor = () => {
   const delay = 9;

@@ -1,5 +1,5 @@
-import React, {useEffect, useRef} from 'react';
-import './kursor.css';
+import {useEffect, useRef, useCallback} from 'react';
+import './style.css';
 
 const initConfig = {
   x: {
@@ -49,7 +49,7 @@ export default function Kursor() {
     };
 
 
-  const animateCursor = React.useCallback(() => {
+  const animateCursor = useCallback(() => {
 
     configs.current['x'].current = mouse.current.x - bounds.current.width / 2;
     configs.current['y'].current = mouse.current.y - bounds.current.height / 2;
@@ -66,7 +66,7 @@ export default function Kursor() {
     // requestAnimationFrame(() => animateCursor());
   }, []);
 
-  const onMouseMoveEv = React.useCallback(() => {
+  const onMouseMoveEv = useCallback(() => {
     // console.log('mouse', mouse.current)
     // console.log('cursor', configs.current)
 

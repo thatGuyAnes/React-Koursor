@@ -1,7 +1,5 @@
 import './App.css';
-import React from 'react';
-// import Cursor from './Cursor';
-import Kursor from './Kursor';
+import Kursor from './components/Lerp/index';
 
 function App() {
 
