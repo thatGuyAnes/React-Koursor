@@ -1,7 +1,8 @@
 # Koursor
 
 A repo that contains different approaches to handle custom cursors.
-Mainly as a react component.
+
+Mainly as a react components running inside a react app.
 
 ## Available Scripts
 
