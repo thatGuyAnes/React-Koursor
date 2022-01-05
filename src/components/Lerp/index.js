@@ -1,4 +1,6 @@
 import {useEffect, useRef, useCallback} from 'react';
+import { getMousePos, lerp } from '../../utils';
+
 import './style.css';
 
 const initConfig = {
@@ -14,24 +16,6 @@ const initConfig = {
   }
 };
 
-const lerp = (x, y, n) => (1 - n) * x + n * y;
-
-// Gets the mouse position
-const getMousePos = (mouseEvent) => {
-    let posx = 0;
-    let posy = 0;
-    if (!mouseEvent) mouseEvent = window.event;
-    if (mouseEvent.pageX || mouseEvent.pageY) {
-        posx = mouseEvent.pageX;
-        posy = mouseEvent.pageY;
-    }
-    else if (mouseEvent.clientX || mouseEvent.clientY)    {
-        posx = mouseEvent.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-        posy = mouseEvent.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-    }
-
-    return { x : posx, y : posy }
-};
 
 export default function Kursor() {
 
