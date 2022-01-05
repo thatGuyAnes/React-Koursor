@@ -6,7 +6,7 @@ const Cursor = () => {
   const delay = 9;
 
   const cursorVisible = React.useRef(true);
-  const cursorEnlarged = React.useRef(false);
+  const cursorEnlarged = React.useRef(false); // Will be helpful later ;)
 
   // Position of mouse.
   const mouseX = React.useRef(window.innerWidth / 2);
